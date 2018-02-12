@@ -4,7 +4,7 @@ import requests
 # The main URL for the Telegram API with our bot's token
 BASE_URL = "https://api.telegram.org/bot{}".format(os.environ['THINGDONE_BOT_TOKEN'])
  
-def receive_message(message):
+def receive_message(msg):
     """Receive a raw message from Telegram"""
     try:
         message = str(msg["message"]["text"])
