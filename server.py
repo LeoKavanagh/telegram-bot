@@ -14,13 +14,16 @@ def receive():
         print(e)
         return "error of some description"
 
-@app.route("/done", methods=["GET", "POST"])
-def done():
+@app.route("/done/<text>", methods=["GET", "POST"])
+def done(text):
     """
     Send a message to me telling me that the thing is done
     """
+    if text == "1":
+        text = "The thing is done"
+
     try:
-        send_message("The thing is done", os.environ['TELEGRAM_CHAT_ID'])
+        send_message(text, os.environ['TELEGRAM_CHAT_ID'])
     except:
         return "I tried to send the message to you but it didn't work"
     return "The thing happened"
