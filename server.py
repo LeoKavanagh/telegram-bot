@@ -14,16 +14,20 @@ def receive():
         print(e)
         return "error of some description"
 
-@app.route("/done/<text>", methods=["GET", "POST"])
-def done(text):
+
+@app.route("/msg", methods=["GET", "POST"])
+def msg():
     """
-    Send a message to me telling me that the thing is done
+    Send a message in headers
     """
-    if text == "1":
-        text = "The thing is done"
+
+    text = request.headers.get('msg')
 
     try:
         send_message(text, os.environ['TELEGRAM_CHAT_ID'])
-    except:
-        return "I tried to send the message to you but it didn't work"
-    return "The thing happened"
+    except Exception as e:
+        msg = "I tried to send the message to you " \
+              "but it didn't work: {} - {}".format(type(e), e)
+        return msg
+    return "Sent message to you on Telegram: {}".format(text)
+
