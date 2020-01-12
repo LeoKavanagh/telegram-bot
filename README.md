@@ -10,7 +10,7 @@ I use a bot like this to send myself little notifications in an easy-to-access w
 I also have a cron job that scrapes [met.ie](https://met.ie) for a summary of the day's
 weather forecast where I live (generally only one or two sentences) and then sends it to me on Telegram every morning.
 
-There are other ways of doing this sort of stuff, but using this simple little bot amuses me.
+There are other, better, ways of doing this sort of stuff, but using this simple little bot amuses me.
 I get quite a lot of use out of it.
 
 To get going with this, you'll need to have accounts with both the Telegram messaging app, and with AWS.
@@ -26,6 +26,14 @@ You will use one of their own bots to register yours. The process is very straig
  4. Give it a username
 
 You'll receive a HTTP API token that you'll need later.
+
+### 1a. Set environmental variables
+
+This little program needs your own Telegram Chat ID and the Bot Token that you got from Step 1.
+I've set these as environmental variables `TELEGRAM_CHAT_ID` and `THINGDONE_BOT_TOKEN`.
+These are referenced in `server.py` and `bot.py` respectively.
+There might be better or more secure ways of doing this,
+but setting environmental variables is enough to get off the ground.
 
 ## 2. Deploy with Zappa
 
@@ -94,5 +102,4 @@ print(x.content)
 ```
 
 In production (quote unquote), this Flask server will run on AWS Lambda instead of on your localhost.
-
 
