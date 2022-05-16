@@ -5,7 +5,7 @@ An even simpler implementation of the simple implementation of a serverless chat
 
 I use a bot like this to send myself little notifications in an easy-to-access way. Eg
 ```
-./really-long-job.sh && curl $telegram_bot --headers "msg: The really long job finished. Get back to your desk."
+./really-long-job.sh && curl $telegram_bot --headers "msg: The really long job finished. Back to work."
 ```
 I also have a cron job that scrapes [met.ie](https://met.ie) for a summary of the day's
 weather forecast where I live (generally only one or two sentences) and then sends it to me on Telegram every morning.

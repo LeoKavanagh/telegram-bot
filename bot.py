@@ -1,9 +1,9 @@
-import os 	
+import os
 import requests
- 
+
 # The main URL for the Telegram API with our bot's token
 BASE_URL = "https://api.telegram.org/bot{}".format(os.environ['THINGDONE_BOT_TOKEN'])
- 
+
 def receive_message(msg):
     """Receive a raw message from Telegram"""
     try:
@@ -13,11 +13,11 @@ def receive_message(msg):
     except Exception as e:
         print(e)
         return (None, None)
- 
+
 def handle_message(message_text):
     """Calculate a response to the message"""
     return message_text
- 
+
 def send_message(message_text, chat_id):
     """Send a message to the Telegram chat defined by chat_id"""
     data = {"text": message_text.encode("utf8"), "chat_id": chat_id}
@@ -26,7 +26,7 @@ def send_message(message_text, chat_id):
         response = requests.post(url, data).content
     except Exception as e:
         print(e)
-        
+
 def run(message):
     """Receive a message, handle it, and send a response"""
     try:
